@@ -1,0 +1,53 @@
+@import 'sass/_bootstrap.scss'
+@import 'sass/_mixins_variables.sass'
+
+body
+	font-family: $sans-font-family
+	color: $dark-color
+	margin-top: 8rem
+
+.navbar
+	color: $light-color
+	span
+		img
+			margin-top: -3px
+			height: 36px
+.movie
+	position: relative
+	input[type="checkbox"]
+		position: absolute
+		top: 25%
+		left: 0
+		margin: 0
+	label
+		background-color: lighten($dark-color, 85%)
+		margin: 3px 0
+		padding: 2px 4px
+		border-radius: 8px
+		font-weight: normal
+		cursor: pointer
+
+#overlay
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	display: none
+	background-color: transparentize($dark-color, 0.5)
+	#modal
+		flex: none
+		.panel-body
+			max-height: 450px
+		img
+			max-height: 420px
+			width: 100%
+			object-fit: contain
+		.row
+			display: flex
+			align-items: center
+			p:not(#details)
+				margin: 0
+	&.open
+		display: flex
+		align-items: center

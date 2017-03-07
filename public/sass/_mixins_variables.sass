@@ -1,0 +1,19 @@
+// Use media-query like this:
+// @include media-query($small-width)
+//     .wrapper
+//         etc...
+@mixin media-query($width)
+	@media screen and (max-width: $width)
+		@content
+
+$sans-font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
+$serif-font-family: 'Palatino Linotype', 'Georgia', serif
+
+$dark-color:  hsl(0, 0%, 05%)
+$light-color: hsl(0, 0%, 95%)
+$muted-color: #777
+
+$small-width:  576px
+$medium-width: 768px
+$large-width:  992px
+$extra-width: 1200px
