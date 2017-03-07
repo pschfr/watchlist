@@ -1,10 +1,23 @@
-# Loop through input label names, perform search request for details
+# Loops through inputs and label names, then performs search request for details & adds watched movies to localStorage
 listMovies = () ->
 	movies = document.getElementsByTagName('label')
+	inputs = document.getElementsByTagName('input')
 	for movie in movies
 		movie.addEventListener('click', (event) ->
 			event.preventDefault()
 			searchTMDb(event.target.innerHTML)
+		)
+	for input in inputs
+		if localStorage.getItem(input.name)
+			document.getElementById(input.name).parentElement.classList.add('watched')
+			document.getElementById(input.name).setAttribute('checked', 'checked')
+		input.addEventListener('click', (event) ->
+			if event.target.checked
+				localStorage.setItem(event.target.name, 'watched')
+				event.target.parentElement.classList.add('watched')
+			else
+				localStorage.removeItem(event.target.name)
+				event.target.parentElement.classList.remove('watched')
 		)
 
 # Search The Movie Database - https://www.themoviedb.org/
@@ -46,13 +59,8 @@ searchTMDb = (query) ->
 				overlay.classList.add('open')
 			# Bind click event to close overlay
 			overlay.addEventListener('click', (event) ->
-				# TODO: make this only fire on bg click, not panel
 				overlay.classList.remove('open')
 			)
 	xhr.send(null)
 
 listMovies()
-
-# TODO:
-# Save 'watched' to localStorage
-# Improve error for no response from TMDb
