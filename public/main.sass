@@ -1,10 +1,15 @@
 @import 'sass/_bootstrap.scss'
 @import 'sass/_mixins_variables.sass'
 
+html
+	position: relative
+	min-height: 100%
+
 body
 	font-family: $sans-font-family
 	color: $dark-color
-	margin-top: 8rem
+	margin-top: $footer-height * 2
+	margin-bottom: $footer-height
 
 .navbar
 	color: $light-color
@@ -13,6 +18,19 @@ body
 		img
 			margin-top: -3px
 			height: 36px
+
+footer
+	position: absolute
+	bottom: 0
+	width: 100%
+	height: $footer-height
+	background-color: transparentize($light-color, 0.75)
+	p
+		margin-bottom: 0
+		line-height: $footer-height
+	a
+		color: inherit
+
 .movie
 	position: relative
 	background-color: lighten($dark-color, 85%)

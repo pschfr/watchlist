@@ -1,11 +1,11 @@
-nav.navbar.navbar-inverse.navbar-fixed-top
-	.container
-		.row
-			.col-xs-12
-				h1 #{title}
-					span.pull-right
-						a(href="#{githubURL}" target="_blank")
-							if environment == "production"
-								img(src="/watchlist/github.svg")
-							else
-								img(src="github.svg")
+headernav.navbar.navbar-inverse.navbar-fixed-top
+		.container
+			.row
+				.col-xs-12
+					h1 #{title}
+						span.pull-right
+							a(href="#{githubURL}" target="_blank")
+								if environment == "production"
+									img(src="/watchlist/github.svg")
+								else
+									img(src="github.svg")

@@ -13,6 +13,7 @@ html(lang="en")
 	body
 		!= partial("_partials/_header")
 		!= yield
+		!= partial("_partials/_footer")
 		if environment == "production"
 			script(src="/watchlist/js/app.js")
 		else
