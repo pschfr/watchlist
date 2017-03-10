@@ -1,3 +1,7 @@
+# Globals
+api_key = '7c0a5517c60b6e558209d52eaf618ad3'
+TMDb_url = 'https://api.themoviedb.org/3/'
+
 # Loops through inputs and label names, then performs search request for details & adds watched movies to localStorage
 listMovies = () ->
 	movies = document.getElementsByTagName('label')
@@ -23,16 +27,16 @@ listMovies = () ->
 # Search The Movie Database - https://www.themoviedb.org/
 searchTMDb = (query) ->
 	xhr = new XMLHttpRequest()
-	key = '7c0a5517c60b6e558209d52eaf618ad3'
-	TMDb_url = 'https://api.themoviedb.org/3/search/movie?api_key=' + key + '&query=' + query
+	request_url = TMDb_url + 'search/movie?api_key=' + api_key + '&query=' + query
 	overlay = document.getElementById('overlay')
+	panel = document.getElementById('panel')
 	title = document.getElementById('title')
 	detail = document.getElementById('details')
 	rating = document.getElementById('rating')
 	date = document.getElementById('date')
 	poster = document.getElementById('poster')
 
-	xhr.open('GET', TMDb_url, true)
+	xhr.open('GET', request_url, true)
 	xhr.onreadystatechange = () ->
 		if (xhr.readyState == 4 && xhr.status == 200)
 			results = JSON.parse(xhr.responseText).results
@@ -47,6 +51,8 @@ searchTMDb = (query) ->
 				date.innerHTML = monthNames[release_date.getMonth()] + ' ' + release_date.getDate() + ', ' + release_date.getFullYear()
 				# Append poster
 				poster.src = 'https://image.tmdb.org/t/p/w500/' + results[0].poster_path
+				# Background image
+				panel.style.backgroundImage = 'url("https://image.tmdb.org/t/p/w1280/' + results[0].backdrop_path + '")'
 				# Toggles overlay open
 				overlay.classList.add('open')
 				console.log(results[0])

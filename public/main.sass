@@ -15,21 +15,21 @@ body
 			height: 36px
 .movie
 	position: relative
-	input[type="checkbox"]
-		position: absolute
-		top: 25%
-		left: 0
-		margin: 0
-	label
-		background-color: lighten($dark-color, 85%)
-		margin: 3px 0
-		padding: 2px 4px
-		border-radius: 8px
-		font-weight: normal
+	background-color: lighten($dark-color, 85%)
+	padding: 4px 6px 6px 4px
+	border-radius: 8px
+	transition: all 0.15s
+	input[type="checkbox"], label
+		vertical-align: middle
 		cursor: pointer
+	input[type="checkbox"]
+		margin: 0 3px 0 0
+	label
+		margin: 7px 0
+		font-weight: normal
+		user-select: none
 	&.watched
 		opacity: 0.5
-		font-style: italic
 
 #overlay
 	position: absolute
@@ -38,11 +38,22 @@ body
 	width: 100%
 	height: 100%
 	display: none
-	background-color: transparentize($dark-color, 0.5)
 	#modal
 		flex: none
 		.panel-body
 			max-height: 450px
+			margin-bottom: 0
+			color: $light-color
+			background-size: cover
+			a
+				color: inherit
+			.overlay
+				position: fixed
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background-color: transparentize($dark-color, 0.25)
 		img
 			max-height: 420px
 			width: 100%

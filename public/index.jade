@@ -1,23 +1,24 @@
 .container
 	.row
 		each movie in movies
-			.col-lg-3.col-md-4.col-sm-6.col-xs-12.movie
-				input(type="checkbox" name="#{movie}" id="#{movie}")
-				label(for="#{movie}")= movie
+			.col-lg-3.col-md-4.col-sm-6.col-xs-12
+				span.movie
+					input(type="checkbox" name="#{movie}" id="#{movie}")
+					label(for="#{movie}")= movie
 #overlay
 	#modal.container
 		.row
 			.col-xs-12
-				.panel.panel-default
-					.panel-heading
-						h1.panel-title#title
-					.panel-body
+				.panel
+					.panel-body#panel
+						.overlay
 						.row
 							.col-xs-4
 								img(src="" id="poster")
 							.col-xs-8
 								.row
 									.col-xs-12
+										h1#title
 										p#details
 								.row
 									.col-xs-6
