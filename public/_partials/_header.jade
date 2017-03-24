@@ -6,7 +6,4 @@ header
 					h1 #{title}
 						span.pull-right
 							a(href="#{githubURL}" target="_blank")
-								if environment == "production"
-									img(src="/watchlist/github.svg")
-								else
-									img(src="github.svg")
+								img(src=(environment == 'production' ? '/watchlist/svg/github.svg' : 'svg/github.svg'))

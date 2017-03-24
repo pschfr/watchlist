@@ -4,14 +4,12 @@ TMDb_url = 'https://api.themoviedb.org/3/'
 
 # Loops through inputs and label names, then performs search request for details & adds watched movies to localStorage
 listMovies = () ->
-	movies = document.getElementsByTagName('label')
-	inputs = document.getElementsByTagName('input')
-	for movie in movies
+	for movie in document.getElementsByTagName('label')
 		movie.addEventListener('click', (event) ->
 			event.preventDefault()
 			searchTMDb(event.target.innerHTML)
 		)
-	for input in inputs
+	for input in document.getElementsByTagName('input')
 		if localStorage.getItem(input.name)
 			document.getElementById(input.name).parentElement.classList.add('watched')
 			document.getElementById(input.name).setAttribute('checked', 'checked')
@@ -28,13 +26,6 @@ listMovies = () ->
 searchTMDb = (query) ->
 	xhr = new XMLHttpRequest()
 	request_url = TMDb_url + 'search/movie?api_key=' + api_key + '&query=' + query
-	overlay = document.getElementById('overlay')
-	panel = document.getElementById('panel')
-	title = document.getElementById('title')
-	detail = document.getElementById('details')
-	rating = document.getElementById('rating')
-	date = document.getElementById('date')
-	poster = document.getElementById('poster')
 
 	xhr.open('GET', request_url, true)
 	xhr.onreadystatechange = () ->
@@ -42,31 +33,54 @@ searchTMDb = (query) ->
 			results = JSON.parse(xhr.responseText).results
 			if results[0]
 				# Append title, details, rating, and date
-				title.innerHTML = '<a href="https://themoviedb.org/movie/' + results[0].id + '" target="_blank">' + results[0].original_title + '</a>'
-				detail.innerHTML = results[0].overview
-				rating.innerHTML = results[0].vote_average
+				document.getElementById('title').innerHTML = '<a href="https://themoviedb.org/movie/' + results[0].id + '" target="_blank">' + results[0].original_title + '</a>'
+				document.getElementById('details').innerHTML = results[0].overview
+				document.getElementById('rating').innerHTML = results[0].vote_average
 				# Format date properly
 				release_date = new Date(results[0].release_date)
 				monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
-				date.innerHTML = monthNames[release_date.getMonth()] + ' ' + release_date.getDate() + ', ' + release_date.getFullYear()
+				document.getElementById('date').innerHTML = monthNames[release_date.getMonth()] + ' ' + release_date.getDate() + ', ' + release_date.getFullYear()
 				# Append poster
-				poster.src = 'https://image.tmdb.org/t/p/w500/' + results[0].poster_path
+				document.getElementById('poster').src = 'https://image.tmdb.org/t/p/w500/' + results[0].poster_path
 				# Background image
-				panel.style.backgroundImage = 'url("https://image.tmdb.org/t/p/w1280/' + results[0].backdrop_path + '")'
+				document.getElementById('panel').style.backgroundImage = 'url("https://image.tmdb.org/t/p/w1280/' + results[0].backdrop_path + '")'
+				# Finds genre based on ID
+				document.getElementById('genres').innerHTML = ''
+				for genreID in results[0].genre_ids
+					lookupGenre(genreID)
 				# Toggles overlay open
-				overlay.classList.add('open')
-				console.log(results[0])
+				document.getElementById('overlay').classList.add('open')
 			else
-				title.innerHTML = query
-				detail.innerHTML = 'No results&hellip;'
-				rating.innerHTML = ''
-				date.innerHTML = ''
-				poster.src = ''
-				overlay.classList.add('open')
+				document.getElementById('title').innerHTML = query
+				document.getElementById('details').innerHTML = 'No results&hellip;'
+				document.getElementById('rating').innerHTML = ''
+				document.getElementById('date').innerHTML = ''
+				document.getElementById('poster').src = ''
+				document.getElementById('overlay').classList.add('open')
 			# Bind click event to close overlay
-			overlay.addEventListener('click', (event) ->
-				overlay.classList.remove('open')
+			document.getElementById('overlay').addEventListener('click', (event) ->
+				document.getElementById('overlay').classList.remove('open')
 			)
 	xhr.send(null)
 
+# Stores all genres in localStorage for only one API call
+findGenres = () ->
+	xhr = new XMLHttpRequest()
+	request_url = TMDb_url + 'genre/movie/list?api_key=' + api_key
+
+	xhr.open('GET', request_url, true)
+	xhr.onreadystatechange = () ->
+		if (xhr.readyState == 4 && xhr.status == 200)
+			results = JSON.parse(xhr.responseText).genres
+			names = results.map (type) -> type.name
+			ids = results.map (type) -> type.id
+			for id, index in ids
+				localStorage.setItem('genre' + id, names[index])
+	xhr.send(null)
+
+# Looks through localStorage for genreID, appends to modal
+lookupGenre = (genreID) ->
+	document.getElementById('genres').innerHTML += '<span class="genre">' + localStorage.getItem('genre' + genreID) + '</span>'
+
+findGenres()
 listMovies()

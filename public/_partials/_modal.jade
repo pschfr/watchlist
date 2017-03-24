@@ -1,0 +1,23 @@
+#overlay
+	#modal.container
+		.row
+			.col-xs-12
+				.panel
+					.panel-body#panel
+						.overlay
+						.row
+							.col-xs-4
+								img(src="" id="poster")
+							.col-xs-8
+								.row
+									.col-xs-12
+										h1#title
+										p#genres
+										p#details
+								.row
+									.col-xs-6
+										p#date
+									.col-xs-6
+										p
+											img(src=(environment == 'production' ? '/watchlist/svg/star.svg' : 'svg/star.svg') id="star")
+											span#rating

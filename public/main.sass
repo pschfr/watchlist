@@ -72,15 +72,31 @@ footer
 				width: 100%
 				height: 100%
 				background-color: transparentize($dark-color, 0.25)
+			#genres
+				margin-bottom: $medium-margin
+				.genre
+					background-color: darken($light-color, 0.5)
+					color: $dark-color
+					margin-right: $tiny-margin
+					padding: $tiny-margin
+					border-radius: $tiny-margin
+					font-weight: bold
+					text-transform: uppercase
 		img
 			max-height: 420px
 			width: 100%
 			object-fit: contain
+			&#star
+				width: 16px
+				margin-top: -$tiny-margin
+				margin-right: $tiny-margin
 		.row
 			display: flex
 			align-items: center
-			p:not(#details)
-				margin: 0
+			p
+				margin-bottom: $small-margin
+				&#details
+					margin-bottom: $medium-margin
 	&.open
 		display: flex
 		align-items: center
