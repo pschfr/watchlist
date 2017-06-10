@@ -34,6 +34,8 @@ footer
 .movie
 	position: relative
 	background-color: lighten($dark-color, 85%)
+	display: inline-block
+	margin: 0 0 7px
 	padding: 4px 6px 6px 4px
 	border-radius: 8px
 	transition: all 0.15s
@@ -43,10 +45,11 @@ footer
 	input[type="checkbox"]
 		margin: 0 3px 0 0
 	label
-		margin: 7px 0
+		display: inline
+		margin: 0
 		font-weight: normal
 		user-select: none
-	&.watched
+	&[title="watched"]
 		opacity: 0.5
 
 #overlay

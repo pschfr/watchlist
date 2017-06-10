@@ -11,15 +11,15 @@ listMovies = () ->
 		)
 	for input in document.getElementsByTagName('input')
 		if localStorage.getItem(input.name)
-			document.getElementById(input.name).parentElement.classList.add('watched')
+			document.getElementById(input.name).parentElement.title = 'watched'
 			document.getElementById(input.name).setAttribute('checked', 'checked')
 		input.addEventListener('click', (event) ->
 			if event.target.checked
 				localStorage.setItem(event.target.name, 'watched')
-				event.target.parentElement.classList.add('watched')
+				event.target.parentElement.title = 'watched'
 			else
 				localStorage.removeItem(event.target.name)
-				event.target.parentElement.classList.remove('watched')
+				event.target.parentElement.title = ''
 		)
 
 # Search The Movie Database - https://www.themoviedb.org/

@@ -1,7 +1,8 @@
-.container
+.container-fluid
 	.row
-		each movie in movies
+		for movie, index in movies
+			- console.log(movie['watched'], index)
 			.col-lg-3.col-md-4.col-sm-6.col-xs-12
-				span.movie
-					input(type="checkbox" name="#{movie}" id="#{movie}")
-					label(for="#{movie}")= movie
+				span(class="movie" title=(movie['watched'] ? "watched" : undefined))
+					input(type="checkbox" name="#{index}" id="#{index}" checked=(movie['watched'] ? "checked" : undefined))
+					label(for="#{index}")= index
