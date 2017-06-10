@@ -1,7 +1,6 @@
 .container-fluid
 	.row
 		for movie, index in movies
-			- console.log(movie['watched'], index)
 			.col-lg-3.col-md-4.col-sm-6.col-xs-12
 				span(class="movie" title=(movie['watched'] ? "watched" : undefined))
 					input(type="checkbox" name="#{index}" id="#{index}" checked=(movie['watched'] ? "checked" : undefined))
