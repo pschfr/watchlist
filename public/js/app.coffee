@@ -21,6 +21,11 @@ listMovies = () ->
 				localStorage.removeItem(event.target.name)
 				event.target.parentElement.title = ''
 		)
+		# Press `Enter` when focused on an input to open the modal
+		input.addEventListener('keyup', (event) ->
+			if (event.keyCode == 13)
+				document.querySelector('label[for="' + event.target.id + '"]').click()
+		)
 
 # Search The Movie Database - https://www.themoviedb.org/
 searchTMDb = (query) ->
@@ -37,19 +42,20 @@ searchTMDb = (query) ->
 				document.getElementById('details').innerHTML = results[0].overview
 				document.getElementById('rating').innerHTML = results[0].vote_average
 				# Format date properly
-				release_date = new Date(results[0].release_date)
+				release_date = new Date(results[0].release_date.replace(/-/g, "/"))
 				monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
 				document.getElementById('date').innerHTML = monthNames[release_date.getMonth()] + ' ' + release_date.getDate() + ', ' + release_date.getFullYear()
 				# Append poster
-				document.getElementById('poster').src = 'https://image.tmdb.org/t/p/w500/' + results[0].poster_path
+				document.getElementById('poster').src = 'https://image.tmdb.org/t/p/w500' + results[0].poster_path
 				# Background image
-				document.getElementById('panel').style.backgroundImage = 'url("https://image.tmdb.org/t/p/w1280/' + results[0].backdrop_path + '")'
+				document.getElementById('panel').style.backgroundImage = 'url("https://image.tmdb.org/t/p/w1280' + results[0].backdrop_path + '")'
 				# Finds genre based on ID
 				document.getElementById('genres').innerHTML = ''
 				for genreID in results[0].genre_ids
 					lookupGenre(genreID)
 				# Toggles overlay open
 				document.getElementById('overlay').classList.add('open')
+				document.body.style.overflow = 'hidden'
 			else
 				document.getElementById('title').innerHTML = query
 				document.getElementById('details').innerHTML = 'No results&hellip;'
@@ -57,9 +63,11 @@ searchTMDb = (query) ->
 				document.getElementById('date').innerHTML = ''
 				document.getElementById('poster').src = ''
 				document.getElementById('overlay').classList.add('open')
+				document.body.style.overflow = 'hidden'
 			# Bind click event to close overlay
 			document.getElementById('overlay').addEventListener('click', (event) ->
 				document.getElementById('overlay').classList.remove('open')
+				document.body.style.overflow = null
 			)
 	xhr.send(null)
 
@@ -82,5 +90,11 @@ findGenres = () ->
 lookupGenre = (genreID) ->
 	document.getElementById('genres').innerHTML += '<span class="genre">' + localStorage.getItem('genre' + genreID) + '</span>'
 
+# Press `Esc` to close modal
+document.onkeyup = (event) ->
+	if (event.keyCode == 27)
+		document.getElementById('overlay').classList.remove('open')
+
+# Run everything on load
 findGenres()
 listMovies()
