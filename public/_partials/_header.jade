@@ -2,10 +2,13 @@ nav.navbar.navbar-inverse.navbar-fixed-top
 	.container-fluid
 		.row
 			.col-xs-12
-				h1 #{title}
+				h1= title
 					span.pull-right
+						a(href="https://github.com/pschfr/watchlist/issues/2" title="Add Movie" target="_blank" tabindex="-1")
+							img(src=(environment == 'production' ? '/watchlist/svg/plus.svg' : 'svg/plus.svg'))
+						| 
 						a(href="https://www.themoviedb.org/" title="Data provided by The Movie Database" target="_blank" tabindex="-1")
 							img(src=(environment == 'production' ? '/watchlist/svg/tmdb.svg' : 'svg/tmdb.svg'))
 						| 
-						a(href="#{githubURL}" title="View the source on GitHub" target="_blank" tabindex="-1")
+						a(href=githubURL title="View the source on GitHub" target="_blank" tabindex="-1")
 							img(src=(environment == 'production' ? '/watchlist/svg/github.svg' : 'svg/github.svg'))

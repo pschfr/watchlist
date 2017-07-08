@@ -4,8 +4,8 @@ html(lang="en")
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
-		meta(name="theme-color" content="#222")
-		title #{title}
+		!= partial("_partials/_favicons")
+		title= title
 		link(rel="stylesheet" href=(environment == "production" ? "/watchlist/main.css" : "/main.css"))
 	body
 		!= partial("_partials/_header")
