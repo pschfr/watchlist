@@ -43,7 +43,7 @@ searchTMDb = (query) ->
 				document.getElementById('rating').innerHTML = results[0].vote_average
 				# Format date properly
 				release_date = new Date(results[0].release_date.replace(/-/g, "/"))
-				monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+				monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 				document.getElementById('date').innerHTML = monthNames[release_date.getMonth()] + ' ' + release_date.getDate() + ', ' + release_date.getFullYear()
 				# Append poster
 				document.getElementById('poster').src = 'https://image.tmdb.org/t/p/w500' + results[0].poster_path

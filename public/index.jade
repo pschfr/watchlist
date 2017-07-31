@@ -1,7 +1,15 @@
+- var watchedCount = 0, unwatchedCount = 0, totalCount = 0;
 .container-fluid
 	.row
 		for movie, index in movies
+			- totalCount++;
+			if movie.watched
+				- watchedCount++;
+			else
+				- unwatchedCount++;
 			.col-lg-3.col-md-4.col-sm-6.col-xs-12
 				span(class="movie" title=(movie['watched'] ? "watched" : undefined))
 					input(type="checkbox" name="#{index}" id="#{index}" checked=(movie['watched'] ? "checked" : undefined))
 					label(for="#{index}")= index
+		.col-xs-12.text-center#count
+			em #{watchedCount} watched, #{unwatchedCount} unwatched, #{totalCount} total.
