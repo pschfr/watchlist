@@ -38,7 +38,7 @@ searchTMDb = (query) ->
 			results = JSON.parse(xhr.responseText).results
 			if results[0]
 				# Append title, details, rating, and date
-				document.getElementById('title').innerHTML = '<a href="https://themoviedb.org/movie/' + results[0].id + '" target="_blank">' + results[0].original_title + '</a>'
+				document.getElementById('title').innerHTML = '<a href="https://themoviedb.org/movie/' + results[0].id + '" target="_blank" rel="noreferrer noopener">' + results[0].original_title + '</a>'
 				document.getElementById('details').innerHTML = results[0].overview
 				document.getElementById('rating').innerHTML = results[0].vote_average
 				# Format date properly
@@ -53,6 +53,8 @@ searchTMDb = (query) ->
 				document.getElementById('genres').innerHTML = ''
 				for genreID in results[0].genre_ids
 					lookupGenre(genreID)
+				# Find trailer from ID
+				lookupMovies(results[0].id)
 				# Toggles overlay open
 				document.getElementById('overlay').classList.add('open')
 				document.body.style.overflow = 'hidden'
@@ -89,6 +91,22 @@ findGenres = () ->
 # Looks through localStorage for genreID, appends to modal
 lookupGenre = (genreID) ->
 	document.getElementById('genres').innerHTML += '<span class="genre">' + localStorage.getItem('genre' + genreID) + '</span>'
+
+# Lookup movie trailers
+lookupMovies = (movieID) ->
+	xhr = new XMLHttpRequest()
+	request_url = TMDb_url + 'movie/' + movieID + '/videos?api_key=' + api_key
+	youtube_url = 'https://www.youtube.com/watch?v='
+
+	xhr.open('GET', request_url, true)
+	xhr.onreadystatechange = () ->
+		if (xhr.readyState == 4 && xhr.status == 200)
+			results = JSON.parse(xhr.responseText).results[0]
+			if results.site == "YouTube"
+				document.getElementById('trailer').href = youtube_url + results.key
+				document.getElementById('type').innerHTML = results.type
+				document.getElementById('youtube').style.display = 'inline-block'
+	xhr.send(null)
 
 # Press `Esc` to close modal
 document.onkeyup = (event) ->

@@ -3,6 +3,8 @@
 		"title": "Watchlist",
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"movies": {
+			"Why Him?": { "watched": false },
+			"My Friend Dahmer": { "watched": false },
 			"Mulan": { "watched": true },
 			"Mulan II": { "watched": false },
 			"Knowing": { "watched": false },
