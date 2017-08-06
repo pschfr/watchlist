@@ -101,11 +101,15 @@ lookupMovies = (movieID) ->
 	xhr.open('GET', request_url, true)
 	xhr.onreadystatechange = () ->
 		if (xhr.readyState == 4 && xhr.status == 200)
-			results = JSON.parse(xhr.responseText).results[0]
-			if results.site == "YouTube"
-				document.getElementById('trailer').href = youtube_url + results.key
-				document.getElementById('type').innerHTML = results.type
-				document.getElementById('youtube').style.display = 'inline-block'
+			response = JSON.parse(xhr.responseText)
+			if response.results.length
+				results = JSON.parse(xhr.responseText).results[0]
+				if results.site == "YouTube"
+					document.getElementById('trailer').style.display = 'inline-block'
+					document.getElementById('trailer').href = youtube_url + results.key
+					document.getElementById('type').innerHTML = results.type
+			else
+				document.getElementById('trailer').style.display = 'none'
 	xhr.send(null)
 
 # Press `Esc` to close modal
