@@ -4,11 +4,14 @@ nav.navbar.navbar-inverse.navbar-fixed-top
 			.col-xs-12
 				h1= title
 					span.pull-right
-						a(href="https://github.com/pschfr/watchlist/issues/2" title="Add Movie" target="_blank" tabindex="-1")
-							img(src=(environment == 'production' ? '/watchlist/svg/plus.svg' : 'svg/plus.svg'))
+						a(href="https://github.com/pschfr/watchlist/issues/2" title="Add Movie" target="_blank")
+							svg
+								use(xlink:href=(environment == 'production' ? '/watchlist/svg/svg.svg#plus' : 'svg/svg.svg#plus'))
 						| 
-						a(href="https://www.themoviedb.org/" title="Data provided by The Movie Database" target="_blank" tabindex="-1")
-							img(src=(environment == 'production' ? '/watchlist/svg/tmdb.svg' : 'svg/tmdb.svg'))
+						a(href="https://www.themoviedb.org/" title="Data provided by The Movie Database" target="_blank")
+							svg
+								use(xlink:href=(environment == 'production' ? '/watchlist/svg/svg.svg#tmdb' : 'svg/svg.svg#tmdb'))
 						| 
-						a(href=githubURL title="View the source on GitHub" target="_blank" tabindex="-1")
-							img(src=(environment == 'production' ? '/watchlist/svg/github.svg' : 'svg/github.svg'))
+						a(href=githubURL title="View the source on GitHub" target="_blank")
+							svg
+								use(xlink:href=(environment == 'production' ? '/watchlist/svg/svg.svg#github' : 'svg/svg.svg#github'))

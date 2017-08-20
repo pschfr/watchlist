@@ -57,7 +57,6 @@ searchTMDb = (query) ->
 				lookupMovies(results[0].id)
 				# Toggles overlay open
 				document.getElementById('overlay').classList.add('open')
-				document.body.style.overflow = 'hidden'
 			else
 				document.getElementById('title').innerHTML = query
 				document.getElementById('details').innerHTML = 'No results&hellip;'
@@ -65,11 +64,9 @@ searchTMDb = (query) ->
 				document.getElementById('date').innerHTML = ''
 				document.getElementById('poster').src = ''
 				document.getElementById('overlay').classList.add('open')
-				document.body.style.overflow = 'hidden'
 			# Bind click event to close overlay
 			document.getElementById('overlay').addEventListener('click', (event) ->
 				document.getElementById('overlay').classList.remove('open')
-				document.body.style.overflow = null
 			)
 	xhr.send(null)
 

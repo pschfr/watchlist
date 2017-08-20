@@ -4,17 +4,22 @@
 body
 	margin-top: 7rem
 
+a
+	text-decoration-skip: ink
+
 .navbar
 	color: $light-color
+	border: 0
 	h1
-		margin: 10px 0
+		margin: 8px 0
 		font-size: $medium-margin
+		line-height: 1
 	span
 		a
 			margin-left: $tiny-margin
-			img
-				margin-top: -3px
+			svg
 				height: $medium-margin
+				width: $medium-margin
 
 #count
 	margin: $medium-margin auto
@@ -22,20 +27,24 @@ body
 .movie
 	background-color: lighten($text-color, 85%)
 	display: inline-block
-	margin: 0 0 7px
+	margin: 0 0 8px
 	padding: 4px 6px 6px 4px
-	border-radius: 8px
-	transition: all 0.25s
-	input[type="checkbox"], label
+	border-radius: 4px
+	line-height: 1
+	transition: all 0.125s ease
+	input, label
 		vertical-align: middle
 		cursor: pointer
-	input[type="checkbox"]
+	input
 		margin: 0 3px 0 0
 	label
 		margin: 0
 		font-weight: normal
 		user-select: none
+	&:active
+		background-color: lighten($text-color, 75%)
 	&[title="watched"]
+		font-style: italic
 		opacity: 0.5
 
 #overlay
@@ -47,7 +56,7 @@ body
 	align-items: center
 	visibility: hidden
 	opacity: 0
-	transition: all 0.75s 0.125s
+	transition: all 0.75s 0.125s ease
 	#modal
 		.panel
 			margin-bottom: 0
@@ -87,10 +96,11 @@ body
 					max-height: 420px
 					width: 100%
 					object-fit: contain
-					&.icon
-						width: 16px
-						margin-top: -$tiny-margin
-						margin-right: $tiny-margin
+				svg
+					height: 16px
+					width: 16px
+					margin-top: -$tiny-margin
+					margin-right: $tiny-margin
 	&.open
 		visibility: visible
 		opacity: 1

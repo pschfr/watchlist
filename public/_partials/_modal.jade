@@ -16,12 +16,15 @@
 										p#details
 										.row
 											.col-xs-4
-												img(src=(environment == 'production' ? '/watchlist/svg/calendar.svg' : 'svg/calendar.svg') class="icon")
+												svg
+													use(xlink:href=(environment == 'production' ? '/watchlist/svg/svg.svg#calendar' : 'svg/svg.svg#calendar'))
 												span#date
 											.col-xs-4
-												img(src=(environment == 'production' ? '/watchlist/svg/star.svg' : 'svg/star.svg') class="icon")
+												svg
+													use(xlink:href=(environment == 'production' ? '/watchlist/svg/svg.svg#star' : 'svg/svg.svg#star'))
 												span#rating
 											.col-xs-4
 												a(id="trailer" target="_blank" rel="noreferrer noopener" style="display:none")
-													img(src=(environment == 'production' ? '/watchlist/svg/youtube.svg' : 'svg/youtube.svg') class="icon" id="youtube")
+													svg
+														use(xlink:href=(environment == 'production' ? '/watchlist/svg/svg.svg#youtube' : 'svg/svg.svg#youtube'))
 													span#type
