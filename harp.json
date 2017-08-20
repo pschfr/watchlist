@@ -2,6 +2,7 @@
 	"globals": {
 		"title": "Watchlist",
 		"githubURL": "https://github.com/pschfr/watchlist",
+		"analytics": "UA-76037357-3",
 		"movies": {
 			"Waking Life": { "watched": false },
 			"The Accountant": { "watched": false },

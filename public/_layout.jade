@@ -13,5 +13,5 @@ html(lang="en")
 		!= yield
 		!= partial("_partials/_modal")
 		script(src=(environment == "production" ? "/watchlist/js/app.js" : "/js/app.js"))
-		if environment === "production"
-			!= partial("_partials/analytics")
+		if environment == "production"
+			!= partial("_partials/_analytics")
