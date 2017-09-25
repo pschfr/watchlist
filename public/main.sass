@@ -2,7 +2,8 @@
 @import '_sass/_bootstrap.scss'
 
 body
-	margin-top: 7rem
+	margin-top: 5rem
+	padding: 0 1.5rem
 
 a
 	text-decoration-skip: ink
@@ -10,6 +11,7 @@ a
 .navbar
 	color: $light-color
 	border: 0
+	margin: 0
 	h1
 		margin: 8px 0
 		font-size: $medium-margin
@@ -22,22 +24,24 @@ a
 				width: $medium-margin
 
 #count
-	margin: $medium-margin auto
+	margin: $small-margin auto
+	color: $muted-color
 
 .movie
-	background-color: lighten($text-color, 85%)
+	background-color: $muted-color
 	display: inline-block
-	margin: 0 0 8px
-	padding: 4px 6px 6px 4px
-	border-radius: 4px
+	margin: 0rem 1.5rem 1.5rem 0
+	padding: 6px
+	border-radius: 6px
 	line-height: 1
 	transition: all 0.125s ease
 	input, label
 		vertical-align: middle
 		cursor: pointer
 	input
-		margin: 0 3px 0 0
+		margin: 0 4px 0 0
 	label
+		display: inline
 		margin: 0
 		font-weight: normal
 		user-select: none
@@ -45,8 +49,7 @@ a
 		background-color: lighten($text-color, 75%)
 	&[title="watched"]
 		font-style: italic
-		opacity: 0.5
-
+		opacity: 0.3
 #overlay
 	position: fixed
 	top: 0
@@ -60,6 +63,7 @@ a
 	#modal
 		.panel
 			margin-bottom: 0
+			border: 0
 			.row
 				display: flex
 				align-items: center
