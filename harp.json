@@ -4,6 +4,9 @@
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"The Thing": { "watched": false },
+			"Sleepaway Camp": { "watched": false },
+			"Tucker and Dale vs Evil": { "watched": false },
 			"Eternal Sunshine of the Spotless Mind": { "watched": false },
 			"Waking Life": { "watched": false },
 			"The Accountant": { "watched": false },
@@ -166,6 +169,8 @@
 			"South Park: Bigger, Longer & Uncut": { "watched": true },
 			"The Internship": { "watched": true },
 			"Jeepers Creepers": { "watched": true },
+			"Jeepers Creepers 2": { "watched": false },
+			"Jeepers Creepers 3": { "watched": false },
 			"American Psycho": { "watched": true },
 			"Grandma's Boy": { "watched": true }
 		}
