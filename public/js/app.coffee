@@ -1,6 +1,7 @@
 # Globals
 api_key = '7c0a5517c60b6e558209d52eaf618ad3'
 TMDb_url = 'https://api.themoviedb.org/3/'
+logging = false
 
 # Loops through inputs and label names, then performs search request for details & adds watched movies to localStorage
 listMovies = () ->
@@ -36,6 +37,8 @@ searchTMDb = (query) ->
 	xhr.onreadystatechange = () ->
 		if (xhr.readyState == 4 && xhr.status == 200)
 			results = JSON.parse(xhr.responseText).results
+			if logging
+				console.log(results)
 			if results[0]
 				# Append title, details, rating, and date
 				document.getElementById('title').innerHTML = '<a href="https://themoviedb.org/movie/' + results[0].id + '" target="_blank" rel="noreferrer noopener">' + results[0].original_title + '</a>'
@@ -79,6 +82,8 @@ findGenres = () ->
 	xhr.onreadystatechange = () ->
 		if (xhr.readyState == 4 && xhr.status == 200)
 			results = JSON.parse(xhr.responseText).genres
+			if logging
+				console.log(results)
 			names = results.map (type) -> type.name
 			ids = results.map (type) -> type.id
 			for id, index in ids
@@ -101,6 +106,8 @@ lookupMovies = (movieID) ->
 			response = JSON.parse(xhr.responseText)
 			if response.results.length
 				results = JSON.parse(xhr.responseText).results[0]
+				if logging
+					console.log(results)
 				if results.site == "YouTube"
 					document.getElementById('trailer').style.display = 'inline-block'
 					document.getElementById('trailer').href = youtube_url + results.key
