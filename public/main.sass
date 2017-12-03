@@ -2,8 +2,7 @@
 @import '_sass/_bootstrap.scss'
 
 body
-	margin-top: 5rem
-	padding: 0 1.5rem
+	padding: 0 $small-margin
 
 a
 	text-decoration-skip: ink
@@ -25,31 +24,34 @@ a
 
 #count
 	margin: $small-margin auto
-	color: $muted-color
+	color: $light-color
 
 .movie
 	background-color: $muted-color
 	display: inline-block
-	margin: 0rem 1.5rem 1.5rem 0
+	margin: 0rem $small-margin $small-margin 0
 	padding: 6px
 	border-radius: 6px
 	line-height: 1
 	transition: all 0.125s ease
-	input, label
+	input[type="checkbox"], label
 		vertical-align: middle
 		cursor: pointer
-	input
+	input[type="checkbox"]
 		margin: 0 4px 0 0
+		&:focus
+			outline: 2px solid lighten($link-color, 25%)
+			outline-offset: 1px
 	label
 		display: inline
 		margin: 0
 		font-weight: normal
 		user-select: none
 	&:active
-		background-color: lighten($text-color, 75%)
+		background-color: darken($light-color, 75%)
 	&[title="watched"]
 		font-style: italic
-		opacity: 0.3
+		opacity: 0.4
 #overlay
 	position: fixed
 	top: 0

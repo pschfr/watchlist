@@ -4,6 +4,10 @@
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"1922": { "watched": false },
+			"Set It Off": { "watched": false },
+			"Prozac Nation": { "watched": false },
+			"Primer": { "watched": false },
 			"The Thing": { "watched": false },
 			"Sleepaway Camp": { "watched": false },
 			"Tucker and Dale vs Evil": { "watched": false },
