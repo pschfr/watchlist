@@ -4,6 +4,11 @@
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"Ginger Snaps": { "watched": false },
+			"Sin City": { "watched": false },
+			"Juno": { "watched": false },
+			"Hot Tub Time Machine": { "watched": true },
+			"Hot Tub Time Machine 2": { "watched": true },
 			"Blades of Glory": { "watched": true },
 			"1922 ": { "watched": false },
 			"Set It Off": { "watched": false },
