@@ -1,9 +1,13 @@
 {
 	"globals": {
 		"title": "Watchlist",
-		"githubURL": "https://github.com/pschfr/watchlist",
+		"githubURL": "https://github.com/gabebroida/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"Jay and Silent Bob Strike Back": { "watched": true },
+			"Clerks":  { "watched": false },
+			"Clerks II":  { "watched": false },
+			"Paul":  { "watched": false },
 			"Blades of Glory": { "watched": true },
 			"1922 ": { "watched": false },
 			"Set It Off": { "watched": false },
