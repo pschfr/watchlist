@@ -10,3 +10,7 @@ for movie, index in movies
 		label(for="#{index}")= index
 p.text-center#count
 	em #{watchedCount} watched, #{unwatchedCount} unwatched, #{totalCount} total.
+	br
+	input(type="checkbox" id="hide" name="hide")
+	label(for="hide")
+		| Hide Watched

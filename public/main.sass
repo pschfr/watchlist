@@ -25,6 +25,7 @@ a
 #count
 	margin: $small-margin auto
 	color: $light-color
+	line-height: 2
 
 .movie
 	background-color: $muted-color
@@ -110,6 +111,15 @@ a
 	&.open
 		visibility: visible
 		opacity: 1
+
+#hide
+	margin-top: 0
+	vertical-align: middle
+label[for="hide"]
+	margin: 0 0 0 3px
+	font-weight: normal
+	font-size: 16px
+	user-select: none
 
 @include media-query($medium-width)
 	#overlay

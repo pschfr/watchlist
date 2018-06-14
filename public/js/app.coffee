@@ -6,27 +6,29 @@ logging = false
 # Loops through inputs and label names, then performs search request for details & adds watched movies to localStorage
 listMovies = () ->
 	for movie in document.getElementsByTagName('label')
-		movie.addEventListener('click', (event) ->
-			event.preventDefault()
-			searchTMDb(event.target.innerHTML)
-		)
+		if movie.htmlFor != 'hide'
+			movie.addEventListener('click', (event) ->
+				event.preventDefault()
+				searchTMDb(event.target.innerHTML)
+			)
 	for input in document.getElementsByTagName('input')
-		if localStorage.getItem(input.name)
-			document.getElementById(input.name).parentElement.title = 'watched'
-			document.getElementById(input.name).setAttribute('checked', 'checked')
-		input.addEventListener('click', (event) ->
-			if event.target.checked
-				localStorage.setItem(event.target.name, 'watched')
-				event.target.parentElement.title = 'watched'
-			else
-				localStorage.removeItem(event.target.name)
-				event.target.parentElement.title = ''
-		)
-		# Press `Enter` when focused on an input to open the modal
-		input.addEventListener('keyup', (event) ->
-			if (event.keyCode == 13)
-				document.querySelector('label[for="' + event.target.id + '"]').click()
-		)
+		if input.id != 'hide'
+			if localStorage.getItem(input.name)
+				document.getElementById(input.name).parentElement.title = 'watched'
+				document.getElementById(input.name).setAttribute('checked', 'checked')
+			input.addEventListener('click', (event) ->
+				if event.target.checked
+					localStorage.setItem(event.target.name, 'watched')
+					event.target.parentElement.title = 'watched'
+				else
+					localStorage.removeItem(event.target.name)
+					event.target.parentElement.title = ''
+			)
+			# Press `Enter` when focused on an input to open the modal
+			input.addEventListener('keyup', (event) ->
+				if (event.keyCode == 13)
+					document.querySelector('label[for="' + event.target.id + '"]').click()
+			)
 
 # Search The Movie Database - https://www.themoviedb.org/
 searchTMDb = (query) ->
@@ -120,6 +122,16 @@ lookupMovies = (movieID) ->
 document.onkeyup = (event) ->
 	if (event.keyCode == 27)
 		document.getElementById('overlay').classList.remove('open')
+
+# Hides watched videos on click
+document.getElementById('hide').addEventListener('click', (event) ->
+	for movie in document.getElementsByClassName('movie')
+		if movie.title
+			if document.getElementById('hide').checked
+				movie.style.display = 'none'
+			else
+				movie.style.display = ''
+)
 
 # Run everything on load
 findGenres()
