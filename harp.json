@@ -4,6 +4,7 @@
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"Carriers": { "watched": false },
 			"Rosemary's Baby": { "watched": false },
 			"The Rocky Horror Picture Show": { "watched": false },
 			"A Clockwork Orange": { "watched": false },
@@ -12,7 +13,7 @@
 			"Christopher Robin": { "watched": false },
 			"Won't You Be My Neighbor?": { "watched": false },
 			"The Incredibles": { "watched": true },
-			"Incredibles 2": { "watched": false },
+			"Incredibles 2": { "watched": true },
 			"A Cure for Wellness": { "watched": false },
 			"Hereditary": { "watched": false },
 			"Ginger Snaps": { "watched": false },
