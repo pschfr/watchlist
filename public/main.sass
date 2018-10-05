@@ -59,7 +59,11 @@ body
 	align-items: center
 	visibility: hidden
 	opacity: 0
-	transition: all 0.75s 0.125s ease
+	transition: all 0.25s 0.125s ease
+	// This is experimental
+	backdrop-filter: blur(3px)
+	// One more than Bootstrap's navbar
+	z-index: 1001
 	#modal
 		.panel
 			margin-bottom: 0
