@@ -4,6 +4,8 @@
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"Heathers": { "watched": false },
+			"The Stepford Wives": { "watched": true },
 			"Carriers": { "watched": false },
 			"Rosemary's Baby": { "watched": false },
 			"The Rocky Horror Picture Show": { "watched": false },
