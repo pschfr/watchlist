@@ -4,6 +4,11 @@
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"Cube": { "watched": true },
+			"Cube 2: Hypercube": { "watched": true },
+			"Cube Zero": { "watched": false },
+			"The Truman Show": { "watched": true },
+			"Circle": { "watched": false },
 			"Heathers": { "watched": false },
 			"The Stepford Wives": { "watched": true },
 			"Carriers": { "watched": false },
