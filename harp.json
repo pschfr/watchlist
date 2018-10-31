@@ -10,7 +10,7 @@
 			"The Ritual": { "watched": false },
 			"Zombie Strippers!": { "watched": false },
 			"The Skeleton Key": { "watched": false },
-			"The Others": { "watched": false },
+			"The Others": { "watched": true },
 			"The Sixth Sense": { "watched": true },
 			"Cube": { "watched": true },
 			"Cube 2: Hypercube": { "watched": true },
@@ -211,7 +211,7 @@
 			"South Park: Bigger, Longer & Uncut": { "watched": true },
 			"The Internship": { "watched": true },
 			"Jeepers Creepers": { "watched": true },
-			"Jeepers Creepers 2": { "watched": false },
+			"Jeepers Creepers 2": { "watched": true },
 			"Jeepers Creepers 3": { "watched": false },
 			"American Psycho": { "watched": true },
 			"Grandma's Boy": { "watched": true }
