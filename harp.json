@@ -4,6 +4,7 @@
 		"githubURL": "https://github.com/pschfr/watchlist",
 		"analytics": "UA-76037357-3",
 		"movies": {
+			"The Invitation": { "watched": true },
 			"Teeth": { "watched": true },
 			"Quest for Camelot": { "watched": false },
 			"Identity": { "watched": false },
